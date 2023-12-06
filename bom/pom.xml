@@ -10,7 +10,7 @@
 
   <groupId>com.spotify</groupId>
   <artifactId>folsom-bom</artifactId>
-  <version>1.17.1-SNAPSHOT</version>
+  <version>1.17.0-RTBHOUSE</version>
   <packaging>pom</packaging>
 
   <name>Folsom BOM</name>
@@ -19,15 +19,24 @@
   </description>
   <url>https://github.com/spotify/folsom/</url>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
+  <repositories>
     <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <id>Adpilot</id>
+      <url>http://nexus.adpilot-rtb.net:8081/content/groups/public</url>
     </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>Adpilot</id>
+      <name>Internal Releases</name>
+      <url>http://nexus.adpilot-rtb.net:8081/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>Adpilot-snapshots</id>
+      <name>Internal Snapshots</name>
+      <url>http://nexus.adpilot-rtb.net:8081/content/repositories/snapshots/</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <dependencyManagement>
@@ -73,8 +82,8 @@
         <version>1.6.3</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <serverId>Adpilot</serverId>
+          <nexusUrl>http://nexus.adpilot-rtb.net:8081</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
       </plugin>
